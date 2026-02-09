@@ -1,0 +1,80 @@
+{
+  "name": "actdocs",
+  "displayName": "ActDocs",
+  "version": "0.0.0",
+  "description": "Generate GitHub Action documentation from action.yml",
+  "author": "Sriman",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/teneplaysofficial/actdocs.git"
+  },
+  "license": "Apache-2.0",
+  "files": [
+    "dist",
+    "actdocs.schema.json"
+  ],
+  "keywords": [
+    "github",
+    "github-actions",
+    "action.yml",
+    "documentation",
+    "readme",
+    "cli",
+    "docs-generator"
+  ],
+  "packageManager": "pnpm@10.28.2",
+  "engineStrict": true,
+  "engines": {
+    "node": ">=22"
+  },
+  "type": "module",
+  "bin": {
+    "actdocs": "dist/cli.js"
+  },
+  "scripts": {
+    "prepare": "husky",
+    "release": "release-hub",
+    "test": "vitest run",
+    "build": "tsdown",
+    "build:schema": "jiti scripts/schema.ts",
+    "lint": "eslint .",
+    "lint:fix": "eslint . --fix",
+    "fmt": "prettier --write .",
+    "fmt:check": "prettier --check ."
+  },
+  "prettier": {
+    "semi": true,
+    "singleQuote": true,
+    "printWidth": 100,
+    "trailingComma": "all",
+    "tabWidth": 2
+  },
+  "lint-staged": {
+    "*": "prettier --write --ignore-unknown",
+    "*.{js,ts}": "eslint --fix"
+  },
+  "dependencies": {
+    "ansilory": "^2.0.2",
+    "figlet": "^1.10.0",
+    "js-yaml": "^4.1.1",
+    "sylog": "^2.1.1",
+    "zod": "^4.3.6"
+  },
+  "devDependencies": {
+    "@eslint/compat": "^2.0.2",
+    "@eslint/js": "^10.0.1",
+    "@types/js-yaml": "^4.0.9",
+    "@types/node": "^25.2.2",
+    "eslint": "^10.0.0",
+    "globals": "^17.3.0",
+    "husky": "^9.1.7",
+    "jiti": "^2.6.1",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.8.1",
+    "release-hub": "1.0.0-beta.1",
+    "tsdown": "^0.20.3",
+    "typescript": "^5.9.3",
+    "typescript-eslint": "^8.54.0",
+    "vitest": "^4.0.18"
+  }
+}

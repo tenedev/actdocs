@@ -2,13 +2,10 @@
 
 > Automatic documentation generator for GitHub Actions.
 
-[![ci](https://github.com/teneplaysofficial/actdocs/actions/workflows/ci.yml/badge.svg)](https://github.com/teneplaysofficial/actdocs)
-
-**ActDocs** reads your `action.yml` (or `action.yaml`) and generates clean, accurate documentation for inputs and outputs-ready to inject into your `README.md`.
+**ActDocs** reads your `action.yml` and generates clean, accurate documentation for inputs and outputs-ready to inject into your `README.md`.
 
 ## Features
 
-- Parses `action.yml` / `action.yaml`
 - Optional `.actdocs.json` for enhanced docs
 - Markdown-friendly descriptions
 - Table or list render modes
@@ -32,12 +29,85 @@ npx -y actdocs
 
 ## Usage
 
+### Basic
+
+Generate documentation using the default configuration:
+
 ```bash
 actdocs
 ```
 
-By default, ActDocs:
+This will:
 
-1. Looks for `action.yml` or `action.yaml`
-2. Loads `.actdocs.json` if present
-3. Generates Markdown docs for inputs & outputs
+1. Locate your GitHub Action metadata file (`action.yml`)
+2. Load `.actdocs.json` if present
+3. Merge metadata + custom overrides
+4. Inject generated documentation into your `README.md`
+
+### Initialize Configuration
+
+Create a starter `.actdocs.json` configuration file:
+
+```bash
+actdocs init
+```
+
+## Placeholder Injection
+
+ActDocs injects content inside matching Markdown comment markers.
+
+By default:
+
+```md
+<!-- actdocs:start -->
+<!-- actdocs:end -->
+```
+
+Everything between these markers will be replaced with generated documentation.
+
+You can customize the placeholder via `.actdocs.json`:
+
+```json
+{
+  "readmePlaceholder": "docs"
+}
+```
+
+Then your README must contain:
+
+```md
+<!-- docs:start -->
+<!-- docs:end -->
+```
+
+## Rendering Modes
+
+You can choose between formats:
+
+### Section Mode (default)
+
+```json
+{
+  "format": "section"
+}
+```
+
+Outputs:
+
+- Headings per input/output
+- Detailed Markdown blocks
+- Required/default/deprecation indicators
+
+### Table Mode
+
+```json
+{
+  "format": "table"
+}
+```
+
+Outputs:
+
+- Structured table layout
+- Required & default columns
+- Deprecated inputs grouped separately

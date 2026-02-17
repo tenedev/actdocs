@@ -1,0 +1,130 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "type": "object",
+  "properties": {
+    "$schema": {
+      "type": "string",
+      "description": "Path or URL to the JSON Schema for this configuration file."
+    },
+    "actionpath": {
+      "default": "action.yml",
+      "description": "Path to the GitHub Action metadata file. Use this when your action file is not located at the repository root or uses a custom name.",
+      "type": "string"
+    },
+    "readmepath": {
+      "default": "README.md",
+      "description": "Path to the README file that actdocs will generate or update. - Supports Markdown files ending in `.md` or `.mdx`.\n- Defaults to `README.md` at the repository root.",
+      "type": "string"
+    },
+    "readmePlaceholder": {
+      "default": "actdocs",
+      "description": "Placeholder marker used by actdocs to define the auto-generated section in the README where the same marker is used for both boundaries.",
+      "type": "string",
+      "minLength": 1
+    },
+    "format": {
+      "default": "section",
+      "description": "Controls how content is rendered in output.\n\n- `section` (default): Renders each item as a titled documentation block.\n- `table`: Renders content in a structured table format.",
+      "type": "string",
+      "enum": ["section", "table"]
+    },
+    "headingLevel": {
+      "default": 3,
+      "description": "Markdown heading level used for generated section titles like `Inputs` and `Outputs`.",
+      "type": "integer",
+      "minimum": 1,
+      "maximum": 6
+    },
+    "inputsTitle": {
+      "default": "Inputs",
+      "description": "Title used for the inputs section in the generated README.",
+      "type": "string",
+      "minLength": 1
+    },
+    "outputsTitle": {
+      "default": "Outputs",
+      "description": "Title used for the outputs section in the generated README.",
+      "type": "string",
+      "minLength": 1
+    },
+    "inputs": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z_][A-Za-z0-9_-]*$",
+        "description": "A unique identifier used as the key. It must start with a letter or \"_\" and can contain alphanumeric characters, \"-\" or \"_\"."
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            ],
+            "description": "A human-readable description of the input.\n\nSupports **Markdown (.md)** formatting, including:\n- headings (`## Heading`)\n- lists\n- code blocks\n\nMay be provided as a single string or an array of strings (which will be joined with newlines)."
+          },
+          "required": {
+            "description": "Whether this input must be provided by the user. Set this to true when the action cannot function without this value.",
+            "type": "boolean"
+          },
+          "default": {
+            "description": "A fallback value used when the workflow does not provide this input. Do not set this when the input is marked as required.",
+            "type": "string"
+          },
+          "deprecationMessage": {
+            "description": "A warning message shown to users when this input is used. Use this to communicate deprecations and suggest alternatives.",
+            "type": "string"
+          }
+        },
+        "required": ["description"],
+        "additionalProperties": false
+      },
+      "description": "Definitions of inputs supported by the action. Each key represents an input name, and its value describes how the input behaves."
+    },
+    "outputs": {
+      "type": "object",
+      "propertyNames": {
+        "type": "string",
+        "pattern": "^[A-Za-z_][A-Za-z0-9_-]*$",
+        "description": "A unique identifier used as the key. It must start with a letter or \"_\" and can contain alphanumeric characters, \"-\" or \"_\"."
+      },
+      "additionalProperties": {
+        "type": "object",
+        "properties": {
+          "description": {
+            "anyOf": [
+              {
+                "type": "string",
+                "minLength": 1
+              },
+              {
+                "minItems": 1,
+                "type": "array",
+                "items": {
+                  "type": "string",
+                  "minLength": 1
+                }
+              }
+            ],
+            "description": "A human-readable description of the input.\n\nSupports **Markdown (.md)** formatting, including:\n- headings (`## Heading`)\n- lists\n- code blocks\n\nMay be provided as a single string or an array of strings (which will be joined with newlines)."
+          }
+        },
+        "required": ["description"],
+        "additionalProperties": false
+      },
+      "description": "Definitions of outputs produced by the action. Each key represents an output name exposed to downstream workflow steps."
+    }
+  },
+  "additionalProperties": false
+}

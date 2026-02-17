@@ -5,7 +5,8 @@
     "moduleResolution": "bundler",
     "strict": true,
     "skipLibCheck": true,
-    "resolveJsonModule": true
+    "resolveJsonModule": true,
+    "types": ["node", "vitest"]
   },
-  "include": ["src"]
+  "include": ["src", "test", "scripts", "eslint.config.ts"]
 }

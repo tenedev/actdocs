@@ -23,6 +23,9 @@
     "docs-generator"
   ],
   "packageManager": "pnpm@10.28.2",
+  "publishConfig": {
+    "access": "public"
+  },
   "engineStrict": true,
   "engines": {
     "node": ">=22"
@@ -34,7 +37,6 @@
   "scripts": {
     "prepare": "husky",
     "release": "release-hub",
-    "test": "vitest run",
     "build": "tsdown",
     "build:schema": "jiti scripts/schema.ts",
     "lint": "eslint .",
@@ -57,6 +59,7 @@
     "ansilory": "^2.0.2",
     "figlet": "^1.10.0",
     "js-yaml": "^4.1.1",
+    "rewrite.md": "^1.0.0",
     "sylog": "^2.1.1",
     "zod": "^4.3.6"
   },
@@ -74,7 +77,6 @@
     "release-hub": "1.0.0-beta.1",
     "tsdown": "^0.20.3",
     "typescript": "^5.9.3",
-    "typescript-eslint": "^8.54.0",
-    "vitest": "^4.0.18"
+    "typescript-eslint": "^8.54.0"
   }
 }

@@ -65,7 +65,7 @@ export class RenderService {
     if (this.hasEntries(data.inputs)) {
       sylog.debug(`Processing ${Object.keys(data.inputs).length} input(s)...`);
 
-      this.append(`${heading} ${ctx.userConfig?.inputsTitle}${EOL}`);
+      this.append(`${heading} ${ctx.userConfig?.inputsTitle}`);
 
       for (const [key, value] of Object.entries(data.inputs)) {
         if (!key) continue;
@@ -74,26 +74,25 @@ export class RenderService {
           sylog.warn(`Input ${key} is marked as deprecated.`);
         }
 
-        this.append(`${subHeading} ${value.deprecationMessage && '🚩'} \`${key}\`${EOL}`);
-        this.append(`${this.formatDescription(value.description)}${EOL}`);
+        this.append(`${subHeading} ${value.deprecationMessage ? '🚩 ' : ''} \`${key}\``);
+        this.append(`${this.formatDescription(value.description)}`);
 
-        if (value.required) this.append(`**Required:** \`${value.required}\`${EOL}`);
-        if (value.default) this.append(`**Default:** \`${value.default}\`${EOL}`);
-        if (value.deprecationMessage)
-          this.append(`⚠️ **Deprecated:** ${value.deprecationMessage}${EOL}`);
+        if (value.required) this.append(`**Required:** \`${value.required}\``);
+        if (value.default) this.append(`**Default:** \`${value.default}\``);
+        if (value.deprecationMessage) this.append(`⚠️ **Deprecated:** ${value.deprecationMessage}`);
       }
     }
 
     if (this.hasEntries(data.outputs)) {
       sylog.debug(`Processing ${Object.keys(data.outputs).length} output(s)...`);
 
-      this.append(`${heading} ${ctx.userConfig?.outputsTitle}${EOL}`);
+      this.append(`${heading} ${ctx.userConfig?.outputsTitle}`);
 
       for (const [key, value] of Object.entries(data.outputs)) {
         if (!key) continue;
 
-        this.append(`${subHeading} \`${key}\`${EOL}`);
-        this.append(`${this.formatDescription(value.description)}${EOL}`);
+        this.append(`${subHeading} \`${key}\``);
+        this.append(`${this.formatDescription(value.description)}`);
       }
     }
 
@@ -109,10 +108,10 @@ export class RenderService {
     if (this.hasEntries(data.inputs)) {
       sylog.debug(`Processing ${Object.keys(data.inputs).length} input(s)...`);
 
-      this.append(`${heading} ${ctx.userConfig?.inputsTitle}${EOL}`);
+      this.append(`${heading} ${ctx.userConfig?.inputsTitle}`);
 
-      this.append(`| Name | Description | Required | Default |${EOL}`);
-      this.append(`|------|-------------|----------|---------|${EOL}`);
+      this.append(`| Name | Description | Required | Default |`);
+      this.append(`|------|-------------|----------|---------|`);
 
       for (const [key, value] of Object.entries(data.inputs)) {
         if (!key) continue;
@@ -121,7 +120,7 @@ export class RenderService {
           `| \`${key}\` | ${this.formatDescription(
             value.description,
             '<br>',
-          )} | ${value.required ? 'Yes' : 'No'} | ${value.default ?? '-'} |${EOL}`,
+          )} | ${value.required ? 'Yes' : 'No'} | ${value.default ?? '-'} |`,
         );
 
         if (value.deprecationMessage) {
@@ -137,10 +136,10 @@ export class RenderService {
     if (this.hasEntries(data.outputs)) {
       sylog.debug(`Processing ${Object.keys(data.outputs).length} output(s)...`);
 
-      this.append(`${heading} ${ctx.userConfig?.outputsTitle}${EOL}${EOL}`);
+      this.append(`${heading} ${ctx.userConfig?.outputsTitle}`);
 
-      this.append(`| Name | Description |${EOL}`);
-      this.append(`|------|-------------|${EOL}`);
+      this.append(`| Name | Description |`);
+      this.append(`|------|-------------|`);
 
       for (const [key, value] of Object.entries(data.outputs)) {
         if (!key) continue;
@@ -149,7 +148,7 @@ export class RenderService {
           ? value.description.join('<br>')
           : (value.description ?? '');
 
-        this.append(`| \`${key}\` | ${description} |${EOL}`);
+        this.append(`| \`${key}\` | ${description} |`);
       }
     }
 
@@ -158,11 +157,11 @@ export class RenderService {
         `${deprecatedInputs.length} deprecated input(s) documented in a separate section.`,
       );
 
-      this.append(`${heading} Deprecated Inputs${EOL}`);
+      this.append(`${heading} Deprecated Inputs`);
 
       for (const input of deprecatedInputs) {
-        this.append(`${subHeading} \`${input.key}\`${EOL}`);
-        this.append(`⚠️ ${input.message}${EOL}`);
+        this.append(`${subHeading} \`${input.key}\``);
+        this.append(`⚠️ ${input.message}`);
       }
     }
 

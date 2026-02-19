@@ -10,6 +10,9 @@ importers:
       ansilory:
         specifier: ^2.0.2
         version: 2.0.2
+      arglet:
+        specifier: ^1.0.0
+        version: 1.0.0
       figlet:
         specifier: ^1.10.0
         version: 1.10.0
@@ -792,6 +795,12 @@ packages:
         integrity: sha512-HqZ5rWlFjGiV0tDm3UxxgNRqsOTniqoKZu0pIAfh7TZQMGuZK+hH0drySty0si0QXj1ieop4+SkSfPZBPPkHig==,
       }
     engines: { node: '>=14' }
+
+  arglet@1.0.0:
+    resolution:
+      {
+        integrity: sha512-3NATrZDLa+bFgNTiHQCFuYVaZslwkaZUVLZKCkaQaa2KagPxk9OMuIKqwU52p8Pwbx6ecZdnwX5XqOvY8SLSTw==,
+      }
 
   argparse@2.0.1:
     resolution:
@@ -2326,6 +2335,8 @@ snapshots:
       kolory: 1.1.2
 
   ansis@4.2.0: {}
+
+  arglet@1.0.0: {}
 
   argparse@2.0.1: {}
 

@@ -20,34 +20,33 @@ export class ConfigService {
   private user() {
     sylog.debug('Loading user configuration for actdocs...');
 
-    if (!hasConfig) {
-      sylog.info('No user configuration file found, falling back to default configuration.');
-      ctx.userConfig = ctx.defaultConfig;
-    } else {
-      try {
-        ctx.userConfig = ConfigSchema.parse(
-          JSON.parse(fs.readFileSync(path.join(cwd, ACTDOCS_CONFIG_FILENAME), 'utf-8')),
-        );
+    try {
+      const baseConfig = hasConfig
+        ? ConfigSchema.parse(
+            JSON.parse(fs.readFileSync(path.join(cwd, ACTDOCS_CONFIG_FILENAME), 'utf-8')),
+          )
+        : ctx.defaultConfig;
 
+      if (!hasConfig) {
+        sylog.info('No user configuration file found, falling back to default configuration.');
+      } else {
         sylog.success('User configuration loaded and validated successfully.');
-      } catch (err) {
-        if (err instanceof Error) {
-          sylog.error(`Failed to load or parse actdocs configuration: ${err.message}`);
-          if (err.stack) sylog.debug(err.stack);
-        }
-
-        if (err instanceof z.ZodError) {
-          sylog.error('Configuration validation failed due to schema errors.');
-          logZodError(err);
-          process.exit(1);
-        }
-
-        sylog.error(String(err));
-        process.exit(1);
       }
-    }
 
-    ctx.userConfig = arglet(ctx.userConfig);
+      ctx.userConfig = ConfigSchema.parse(arglet(baseConfig));
+    } catch (err) {
+      if (err instanceof z.ZodError) {
+        sylog.error('Configuration validation failed due to schema errors.');
+        logZodError(err);
+      } else if (err instanceof Error) {
+        sylog.error(`Failed to load or parse actdocs configuration: ${err.message}`);
+        if (err.stack) sylog.debug(err.stack);
+      } else {
+        sylog.error(String(err));
+      }
+
+      process.exit(1);
+    }
   }
 
   private action() {

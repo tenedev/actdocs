@@ -49,8 +49,8 @@ export class RenderService {
     return !!obj && Object.keys(obj).length > 0;
   }
 
-  private append(line: string) {
-    this.result += `${line}${EOL}`;
+  private append(line: string, eolCount: number = 1) {
+    this.result += `${line}${EOL.repeat(eolCount)}`;
   }
 
   private formatDescription(desc: string | string[], breakPoint: string = EOL) {
@@ -75,11 +75,12 @@ export class RenderService {
         }
 
         this.append(`${subHeading} ${value.deprecationMessage ? '🚩 ' : ''} \`${key}\``);
-        this.append(`${this.formatDescription(value.description)}`);
+        this.append(`${this.formatDescription(value.description)}`, 2);
 
-        if (value.required) this.append(`**Required:** \`${value.required}\``);
-        if (value.default) this.append(`**Default:** \`${value.default}\``);
-        if (value.deprecationMessage) this.append(`⚠️ **Deprecated:** ${value.deprecationMessage}`);
+        if (value.required) this.append(`**Required:** \`${value.required}\``, 2);
+        if (value.default) this.append(`**Default:** \`${value.default}\``, 2);
+        if (value.deprecationMessage)
+          this.append(`⚠️ **Deprecated:** ${value.deprecationMessage}`, 2);
       }
     }
 
@@ -92,7 +93,7 @@ export class RenderService {
         if (!key) continue;
 
         this.append(`${subHeading} \`${key}\``);
-        this.append(`${this.formatDescription(value.description)}`);
+        this.append(`${this.formatDescription(value.description)}`, 2);
       }
     }
 

@@ -57,7 +57,7 @@
   },
   "dependencies": {
     "ansilory": "^2.0.2",
-    "arglet": "^1.0.0",
+    "arglet": "^1.1.0",
     "figlet": "^1.10.0",
     "js-yaml": "^4.1.1",
     "rewrite.md": "^1.0.0",

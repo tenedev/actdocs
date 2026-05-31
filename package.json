@@ -22,7 +22,7 @@
     "cli",
     "docs-generator"
   ],
-  "packageManager": "pnpm@10.34.0",
+  "packageManager": "pnpm@10.34.1",
   "publishConfig": {
     "access": "public"
   },

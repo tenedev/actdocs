@@ -63,7 +63,7 @@ importers:
         specifier: 1.0.0-beta.1
         version: 1.0.0-beta.1(@types/node@25.2.2)
       tsdown:
-        specifier: ^0.22.13
+        specifier: ^0.22.14
         version: 0.22.14(typescript@6.0.3)(unrun@0.2.30(@emnapi/core@1.11.2)(@emnapi/runtime@1.11.2))
       typescript:
         specifier: ^6.0.3

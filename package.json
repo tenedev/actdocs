@@ -65,11 +65,11 @@
     "zod": "^4.3.6"
   },
   "devDependencies": {
-    "@eslint/compat": "^2.0.2",
+    "@eslint/compat": "^2.1.0",
     "@eslint/js": "^10.0.1",
     "@types/js-yaml": "^4.0.9",
     "@types/node": "^25.9.5",
-    "eslint": "^10.0.0",
+    "eslint": "^10.8.0",
     "globals": "^17.7.0",
     "husky": "^9.1.7",
     "jiti": "^2.7.0",
@@ -78,6 +78,6 @@
     "release-hub": "1.0.0-beta.1",
     "tsdown": "^0.22.14",
     "typescript": "^6.0.3",
-    "typescript-eslint": "^8.54.0"
+    "typescript-eslint": "^8.66.0"
   }
 }

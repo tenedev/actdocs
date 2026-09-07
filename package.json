@@ -58,7 +58,7 @@
   "dependencies": {
     "ansilory": "^2.0.2",
     "arglet": "^1.1.0",
-    "figlet": "^1.10.0",
+    "figlet": "^1.11.4",
     "js-yaml": "^5.0.0",
     "rewrite.md": "^1.0.0",
     "sylog": "^2.1.1",

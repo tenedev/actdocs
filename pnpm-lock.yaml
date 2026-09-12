@@ -26,8 +26,8 @@ importers:
         specifier: ^2.1.1
         version: 2.1.1
       zod:
-        specifier: ^4.3.6
-        version: 4.3.6
+        specifier: ^4.6.1
+        version: 4.6.2
     devDependencies:
       '@eslint/compat':
         specifier: ^2.1.0
@@ -1976,10 +1976,10 @@ packages:
         integrity: sha512-obrazyE8Cyh79xTQS9wv44khnhvkXG1CDSSy0bg+Pjjla+iXkKXK2b6+LTYXSN3qvVfQxc0MN5qhNKYr9sl3Zw==,
       }
 
-  zod@4.3.6:
+  zod@4.6.2:
     resolution:
       {
-        integrity: sha512-rftlrkhHZOcjDwkGlnUtZZkvaPHCsDATp4pGpuOOMDaTdDDXF91wuVDJoWoPsKX/3YPQ5fHuF3STjcYyKr+Qhg==,
+        integrity: sha512-lh5RCAGFa1Cm2hjtNwLQhSs/AsqdWnTQaBER9fEwN/88pSh7KOtJavtBx/0VlkN/uFd61SwYmljLMDAsHlvzBQ==,
       }
 
 snapshots:
@@ -2786,7 +2786,7 @@ snapshots:
       jiti: 2.7.0
       semver: 7.7.4
       sylog: 2.1.1
-      zod: 4.3.6
+      zod: 4.6.2
     transitivePeerDependencies:
       - '@types/node'
 
@@ -3030,4 +3030,4 @@ snapshots:
       '@yuku-parser/binding-win32-arm64': 0.8.0
       '@yuku-parser/binding-win32-x64': 0.8.0
 
-  zod@4.3.6: {}
+  zod@4.6.2: {}

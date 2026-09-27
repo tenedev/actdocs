@@ -39,7 +39,7 @@ importers:
         specifier: ^4.0.9
         version: 4.0.9
       '@types/node':
-        specifier: ^25.9.7
+        specifier: ^25.9.8
         version: 25.9.8
       eslint:
         specifier: ^10.11.0
